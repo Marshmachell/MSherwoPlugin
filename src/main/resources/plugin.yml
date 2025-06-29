@@ -2,3 +2,4 @@ name: MSherwo
 version: '${project.version}'
 main: com.marshmachell.msherwo.MSherwo
 api-version: '1.21'
+author: "Marshmachell"
