@@ -24,20 +24,21 @@ public class ArmorStandInteractEvent implements Listener {
             if (handItem.getType().isAir() | !(mozhno.contains(handItem.getType()))) {return;}
             World world = stand.getWorld();
 
-            switch (handItem.getType()) {
-                case HONEYCOMB -> {if (!isLocked(stand)) {
+            if (handItem.getType() == Material.HONEYCOMB) {
+                if (!isLocked(stand)) {
                     world.spawnParticle(Particle.WAX_ON, stand.getLocation(), 45, 0.25, 1, 0.25, 0.001);
                     world.playSound(stand.getLocation(), Sound.ITEM_HONEYCOMB_WAX_ON, 1.0f, 1.0f);
                     player.swingMainHand();
                     equipmentLock(stand);
                     decrement(player, handItem);
-                }}
-                default -> {if (isLocked(stand)) {
+                }
+            } else {
+                if (isLocked(stand)) {
                     world.spawnParticle(Particle.WAX_OFF, stand.getLocation(), 45, 0.25, 1, 0.25, 0.001);
                     world.playSound(stand.getLocation(), Sound.ITEM_AXE_WAX_OFF, 1.0f, 1.0f);
                     player.swingMainHand();
                     removeEquipmentLock(stand);
-                }}
+                }
             }
         }
     }

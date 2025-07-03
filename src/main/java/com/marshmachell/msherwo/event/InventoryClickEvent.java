@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryAction;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
@@ -24,12 +25,13 @@ public class InventoryClickEvent implements Listener {
 
     @EventHandler
     public void onClick(org.bukkit.event.inventory.InventoryClickEvent e) {
+        if (e.getSlotType() != InventoryType.SlotType.ARMOR) {return;}
         Player player = (Player) e.getWhoClicked();
         ItemStack item = e.getCursor();
         ItemStack hat = player.getInventory().getItem(EquipmentSlot.HEAD);
         if (item == null || hat == null) {return;}
 
-        if (e.getRawSlot() != 5 || HELMETS.contains(item.getType())) {return;}
+        if (e.getSlot() != 39 || HELMETS.contains(item.getType())) {return;}
         InventoryAction action = e.getAction();
         if (action != InventoryAction.PLACE_ALL && action != InventoryAction.PLACE_ONE) {return;}
 

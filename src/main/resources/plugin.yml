@@ -1,5 +1,5 @@
-name: MSherwo
+name: MSherwoPlugin
 version: '${project.version}'
-main: com.marshmachell.msherwo.MSherwo
+main: com.marshmachell.msherwo.MSherwoPlugin
 api-version: '1.21'
 author: "Marshmachell"
